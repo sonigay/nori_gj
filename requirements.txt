@@ -1,0 +1,7 @@
+discord.py == 0.16.12
+PyGithub
+pyssml
+gspread
+oauth2client
+PyOpenSSL
+bs4
