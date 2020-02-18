@@ -12,9 +12,9 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('jego-972d19158581.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('gjhelper-cc7069273059.json', scope)
 client = gspread.authorize(creds)
-doc = client.open_by_url('https://docs.google.com/spreadsheets/d/15p6G4jXmHw7Z_iRCYeFwRzkzLxqf-3Pj0c6FeVuFYBM')
+doc = client.open_by_url('https://docs.google.com/spreadsheets/d/1PA2WP-aQ-d8TlGubOSpUJwHoH8VZfiTwIFPO3eYGnIs')
 
 
 client = discord.Client()
@@ -41,7 +41,7 @@ async def on_message(message):
 	if message.content.startswith('!나이'):
 		SearchID = message.content[len('!나이')+1:]
 		gc = gspread.authorize(creds)
-		wks = gc.open('오전재고').worksheet('만나이계산기')
+		wks = gc.open('GJ재고관리').worksheet('만나이계산기')
 		
 		wks.update_acell('C8', SearchID)
 		result1 = wks.acell('H8').value
@@ -58,7 +58,7 @@ async def on_message(message):
 	if message.content.startswith('!유지기간'):
 		SearchID = message.content[len('!유지기간')+1:]
 		gc = gspread.authorize(creds)
-		wks = gc.open('오전재고').worksheet('유지기간')
+		wks = gc.open('GJ재고관리').worksheet('유지기간')
 		wks.update_acell('a1', SearchID)
 		result = wks.acell('b1').value
 		
@@ -80,7 +80,7 @@ async def on_message(message):
 #	if message.content.startswith('!모델명'):
 #		SearchID = message.content[len('!모델명')+1:]
 #		gc = gspread.authorize(creds)
-#		wks = gc.open('오전재고').worksheet('시트2')
+#		wks = gc.open('GJ재고관리').worksheet('시트2')
 #		wks.update_acell('A1', SearchID)
 #		result = wks.acell('B1').value
 #		
